@@ -26,6 +26,7 @@ An answer to that question.
 Answer to foo bar dilemma.
 
 == Screenshots ==
+![alt text](http://url/to/img.png)
 
 1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
 the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
