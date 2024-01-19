@@ -20,10 +20,29 @@ export default function save() {
 	return null;
 }
 */
+/*
 export default function save() {
 	return (
 		<p { ...useBlockProps.save() }>
 			{ 'Claro Plugin – hello from the saved content!' }
 		</p>
 	);
+}
+*/
+
+import { RichText } from '@wordpress/block-editor';
+
+export default function Save( { attributes } ) {
+    return (
+        <div className="my-block-class">
+            <RichText.Content
+                tagName="h2"
+                value={ attributes.title }
+            />
+            <RichText.Content
+                tagName="p"
+                value={ attributes.description }
+            />
+        </div>
+    );
 }

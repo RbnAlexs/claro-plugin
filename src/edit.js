@@ -1,86 +1,31 @@
-/**
- * Retrieves the translation of text.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
- */
 import { __ } from '@wordpress/i18n';
+import { useBlockProps, RichText } from '@wordpress/block-editor';
 
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
-import { useBlockProps } from '@wordpress/block-editor';
-
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
-import './editor.scss';
-
-/**
- * The edit function describes the structure of your block in the context of the
- * editor. This represents what the editor will render when the block is used.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
- *
- * @return {Element} Element to render.
- */
-/*
-export default function Edit() {
-	return (
-		<p { ...useBlockProps() }>
-			{ __( 'AMX Plugin – hello from the editor!', 'claro-plugin' ) }
-		</p>
-	);
-}
-*/
-
-import { withSelect } from '@wordpress/data';
-
-import { RichText } from '@wordpress/block-editor';
-
-function Edit( { categories, postType } ) {
-
-	const categorySlugs = categories.map( category => category.slug ).join(', ');
-	//console.log(categorySlugs);
-	//console.log('Post Type:', postType);
-
-/*
-	let className = '';
-	if (categorySlugs.includes('nacional')) {
-		className = 'nacional';
-	}
-*/
-	let className = '';
-	if (categories.length > 0) {
-		const firstCategorySlug = categories[0].slug;
-		let validCategories = ['nacional', 'internacional', 'entretenimiento', 'tecnologia', 'mascotas', 'deportes'];
-		if (validCategories.includes(firstCategorySlug)) {
-			className = firstCategorySlug;
-		}
-	}
-
-	return (
-		<p class={className} { ...useBlockProps() }>
-			{ __( ' Slug: ', 'claro-plugin' ) } { categorySlugs }
-			{ __( ' Post Type: ', 'claro-plugin' ) } { postType }
-		</p>
-	);
-}
-
-export default withSelect( ( select ) => {
-	const { getEntityRecords } = select( 'core' );
-	const postID = select( 'core/editor' ).getCurrentPostId();
-	const postType = select( 'core/editor' ).getCurrentPostType();
-	const categories = getEntityRecords( 'taxonomy', 'category', { post: postID } );
-
-	return {
-		categories: categories || [],
-		postType,
+export default function Edit( { attributes, setAttributes } ) {
+	const onChangeTitle = ( value ) => {
+		setAttributes( { title: value } );
 	};
-} )( Edit );
 
+	const onChangeDescription = ( value ) => {
+		setAttributes( { description: value } );
+	};
+
+	return (
+		<div { ...useBlockProps() }  className="my-block-class">
+			<RichText
+				tagName="h2"
+				value={ attributes.title }
+				allowedFormats={ [ 'core/bold', 'core/italic' ] }
+				onChange={ onChangeTitle }
+				placeholder={ __( 'Add a title', 'claro-plugin' ) }
+			/>
+			<RichText
+				tagName="p"
+				value={ attributes.description }
+				allowedFormats={ [ 'core/bold', 'core/italic' ] }
+				onChange={ onChangeDescription }
+				placeholder={ __( 'Add a description', 'claro-plugin' ) }
+			/>
+		</div>
+	);
+}

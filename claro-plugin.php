@@ -30,15 +30,16 @@ function claro_plugin_claro_plugin_block_init() {
 	register_block_type( __DIR__ . '/build' );
 }
 add_action( 'init', 'claro_plugin_claro_plugin_block_init' );
-*/
 
+// Test render_callback
 function claro_plugin_render_content( $attributes ) {
 	return '<h2>' . esc_html__( '¡Hola mundo! :D', 'claro-plugin' ) . '</h2>'; 
 }
+*/
 
 function claro_plugin_claro_plugin_block_init() {
     register_block_type( __DIR__ . '/build', array(
-        'render_callback' => 'claro_plugin_render_content',
+       // 'render_callback' => 'claro_plugin_render_content',
         'post_types' => array('post'),
     ));
 }

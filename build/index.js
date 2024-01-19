@@ -10,7 +10,7 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (/* binding */ Edit)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -18,94 +18,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__);
-
-/**
- * Retrieves the translation of text.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
- */
-
-
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
-
-
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
-
-
-/**
- * The edit function describes the structure of your block in the context of the
- * editor. This represents what the editor will render when the block is used.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
- *
- * @return {Element} Element to render.
- */
-/*
-export default function Edit() {
-	return (
-		<p { ...useBlockProps() }>
-			{ __( 'AMX Plugin – hello from the editor!', 'claro-plugin' ) }
-		</p>
-	);
-}
-*/
 
 
 
 function Edit({
-  categories,
-  postType
+  attributes,
+  setAttributes
 }) {
-  const categorySlugs = categories.map(category => category.slug).join(', ');
-  //console.log(categorySlugs);
-  //console.log('Post Type:', postType);
-
-  /*
-  	let className = '';
-  	if (categorySlugs.includes('nacional')) {
-  		className = 'nacional';
-  	}
-  */
-  let className = '';
-  if (categories.length > 0) {
-    const firstCategorySlug = categories[0].slug;
-    let validCategories = ['nacional', 'internacional', 'entretenimiento', 'tecnologia', 'mascotas', 'deportes'];
-    if (validCategories.includes(firstCategorySlug)) {
-      className = firstCategorySlug;
-    }
-  }
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    class: className,
-    ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(' Slug: ', 'claro-plugin'), " ", categorySlugs, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(' Post Type: ', 'claro-plugin'), " ", postType);
-}
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.withSelect)(select => {
-  const {
-    getEntityRecords
-  } = select('core');
-  const postID = select('core/editor').getCurrentPostId();
-  const postType = select('core/editor').getCurrentPostType();
-  const categories = getEntityRecords('taxonomy', 'category', {
-    post: postID
-  });
-  return {
-    categories: categories || [],
-    postType
+  const onChangeTitle = value => {
+    setAttributes({
+      title: value
+    });
   };
-})(Edit));
+  const onChangeDescription = value => {
+    setAttributes({
+      description: value
+    });
+  };
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(),
+    className: "my-block-class"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    tagName: "h2",
+    value: attributes.title,
+    allowedFormats: ['core/bold', 'core/italic'],
+    onChange: onChangeTitle,
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Add a title', 'claro-plugin')
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    tagName: "p",
+    value: attributes.description,
+    allowedFormats: ['core/bold', 'core/italic'],
+    onChange: onChangeDescription,
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Add a description', 'claro-plugin')
+  }));
+}
 
 /***/ }),
 
@@ -196,7 +142,7 @@ addFilter('editor.BlockListBlock', 'my-plugin/with-inspector-controls', function
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ save)
+/* harmony export */   "default": () => (/* binding */ Save)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -225,23 +171,30 @@ export default function save() {
 	return null;
 }
 */
-function save() {
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save()
-  }, 'Claro Plugin – hello from the saved content!');
+/*
+export default function save() {
+	return (
+		<p { ...useBlockProps.save() }>
+			{ 'Claro Plugin – hello from the saved content!' }
+		</p>
+	);
 }
+*/
 
-/***/ }),
 
-/***/ "./src/editor.scss":
-/*!*************************!*\
-  !*** ./src/editor.scss ***!
-  \*************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
+function Save({
+  attributes
+}) {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "my-block-class"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+    tagName: "h2",
+    value: attributes.title
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+    tagName: "p",
+    value: attributes.description
+  }));
+}
 
 /***/ }),
 
@@ -287,16 +240,6 @@ module.exports = window["wp"]["blocks"];
 
 /***/ }),
 
-/***/ "@wordpress/data":
-/*!******************************!*\
-  !*** external ["wp","data"] ***!
-  \******************************/
-/***/ ((module) => {
-
-module.exports = window["wp"]["data"];
-
-/***/ }),
-
 /***/ "@wordpress/i18n":
 /*!******************************!*\
   !*** external ["wp","i18n"] ***!
@@ -313,7 +256,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/claro-plugin","version":"0.1.0","title":"Claro Plugin","category":"widgets","icon":"beer","keywords":["claro","carso","amx"],"description":"A super simple Gutenberg plugin. It will change according to the category you choose. This block can only be used in posts.","example":{},"supports":{"html":false},"textdomain":"claro-plugin","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/claro-plugin","version":"0.1.0","title":"Claro Plugin","category":"widgets","icon":"beer","keywords":["claro","carso","amx"],"description":"A super simple Gutenberg plugin. It will change according to the category you choose. This block can only be used in posts.","example":{},"supports":{"html":false},"textdomain":"claro-plugin","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","attributes":{"title":{"type":"string","source":"html","selector":"h2"},"description":{"type":"string","source":"html","selector":"p"}}}');
 
 /***/ })
 
