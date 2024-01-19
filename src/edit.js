@@ -29,9 +29,6 @@ function Edit( { attributes, setAttributes, categories } ) {
 
 	return (
 		<div { ...useBlockProps() }  className={classCategory}>
-			<span>Current Category: {classCategory}</span><br/>
-			<span>Current CSS Class: {className}</span><br/>
-			<italic>If you changed your main category and it doesn't match with out palette color, please reload your editor and update to view your changes in front-end.</italic>
 			<RichText
 				tagName="h2"
 				value={ attributes.title }
@@ -46,6 +43,11 @@ function Edit( { attributes, setAttributes, categories } ) {
 				onChange={ onChangeDescription }
 				placeholder={ __( 'Add a description', 'claro-plugin' ) }
 			/>
+			<div className='instructions'>
+				<span>Current Category: {classCategory}</span><br/>
+				<span>Current CSS Class: {className}</span><br/>
+				<span>If you changed your main category and it doesn't match with out palette color, please reload your editor and update to view your changes in front-end.</span>
+			</div>
 		</div>
 	);
 }

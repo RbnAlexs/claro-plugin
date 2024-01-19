@@ -63,7 +63,7 @@ function Edit({
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(),
     className: classCategory
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "Current Category: ", classCategory), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "Current CSS Class: ", className), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("italic", null, "If you changed your main category and it doesn't match with out palette color, please reload your editor and update to view your changes in front-end."), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "h2",
     value: attributes.title,
     allowedFormats: ['core/bold', 'core/italic'],
@@ -75,7 +75,9 @@ function Edit({
     allowedFormats: ['core/bold', 'core/italic'],
     onChange: onChangeDescription,
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Add a description', 'claro-plugin')
-  }));
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "instructions"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "Current Category: ", classCategory), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "Current CSS Class: ", className), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "If you changed your main category and it doesn't match with out palette color, please reload your editor and update to view your changes in front-end.")));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.withSelect)(select => {
   const {
