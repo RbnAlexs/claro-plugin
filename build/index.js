@@ -71,7 +71,12 @@ function Edit({
   const categorySlugs = categories.map(category => category.slug).join(', ');
   console.log(categorySlugs);
   console.log('Post Type:', postType);
+  let className = '';
+  if (categorySlugs.includes('nacional')) {
+    className = 'my-css-class';
+  }
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    class: className,
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(' Slug: ', 'claro-plugin'), " ", categorySlugs, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(' Post Type: ', 'claro-plugin'), " ", postType);
 }
@@ -212,19 +217,7 @@ function save() {
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save()
   }, 'Claro Plugin – hello from the saved content!');
-} /*
-  export default function save( { attributes } ) {
-     const { categorySlugs } = attributes;
-     let blockClass = 'my-block';
-      if (categorySlugs.includes('nacional')) {
-         blockClass += ' nacional';
-     }
-      return (
-         <div className={ blockClass }>
-         </div>
-     );
-  }
-  */
+}
 
 /***/ }),
 

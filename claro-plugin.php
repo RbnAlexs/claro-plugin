@@ -44,11 +44,7 @@ function claro_plugin_claro_plugin_block_init() {
 }
 add_action( 'init', 'claro_plugin_claro_plugin_block_init' );
 
- 
-
-
-function misha_blacklist_blocks( $allowed_blocks ) {
-    // get the current post type
+function blacklist_blocks( $allowed_blocks ) {
     $post_type = get_post_type();
 
     // if the post type is 'post', return the allowed blocks without any modification
@@ -65,4 +61,4 @@ function misha_blacklist_blocks( $allowed_blocks ) {
     // return the new list of allowed blocks
     return array_keys( $blocks );
 }
-add_filter( 'allowed_block_types_all', 'misha_blacklist_blocks' );
+add_filter( 'allowed_block_types_all', 'blacklist_blocks' );

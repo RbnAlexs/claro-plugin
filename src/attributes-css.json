@@ -1,45 +1,22 @@
 {
-    "atributos_css": [
-      {
-        "nombre": "Nacional",
-        "slug": "nacional",
-        "css": {
-          "color_del_fondo": "#00B049",
-          "color_de_texto": "#FFFFFF"
-        }
-      },
-      {
-        "nombre": "Entretenimiento",
-        "slug": "entretenimiento",
-        "css": {
-          "color_del_fondo": "#FFC915",
-          "color_de_texto": "#FFFFFF"
-        }
-      },
-      {
-        "nombre": "Tecnología",
-        "slug": "tecnologia",
-        "css": {
-          "color_del_fondo": "#00D3F8",
-          "color_de_texto": "#FFFFFF"
-        }
-      },
-      {
-        "nombre": "Mascotas",
-        "slug": "mascotas",
-        "css": {
-          "color_del_fondo": "#90456D",
-          "color_de_texto": "#FFFFFF"
-        }
-      },
-      {
-        "nombre": "Deportes",
-        "slug": "deportes",
-        "css": {
-          "color_del_fondo": "#FF372C",
-          "color_de_texto": "#FFFFFF"
-        }
-      }
-    ]
+  "nacional": {
+    "background-color": "#00B049",
+    "color": "#FFFFFF"
+  },
+  "entretenimiento": {
+    "background-color": "#FFC915",
+    "color": "#FFFFFF"
+  },
+  "tecnologia": {
+    "background-color": "#00D3F8",
+    "color": "#FFFFFF"
+  },
+  "mascotas": {
+    "background-color": "#90456D",
+    "color": "#FFFFFF"
+  },
+  "deportes": {
+    "background-color": "#FF372C",
+    "color": "#FFFFFF"
   }
-  
+}

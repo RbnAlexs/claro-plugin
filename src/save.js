@@ -26,18 +26,4 @@ export default function save() {
 			{ 'Claro Plugin – hello from the saved content!' }
 		</p>
 	);
-}/*
-export default function save( { attributes } ) {
-    const { categorySlugs } = attributes;
-    let blockClass = 'my-block';
-
-    if (categorySlugs.includes('nacional')) {
-        blockClass += ' nacional';
-    }
-
-    return (
-        <div className={ blockClass }>
-        </div>
-    );
 }
-*/

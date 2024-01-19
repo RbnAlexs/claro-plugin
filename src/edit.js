@@ -39,8 +39,6 @@ export default function Edit() {
 }
 */
 
-
-
 import { withSelect } from '@wordpress/data';
 
 function Edit( { categories, postType } ) {
@@ -50,8 +48,15 @@ function Edit( { categories, postType } ) {
 	console.log('Post Type:', postType);
 
 
+	let className = '';
+	if (categorySlugs.includes('nacional')) {
+		className = 'my-css-class';
+	}
+
+	
+
 	return (
-		<p { ...useBlockProps() }>
+		<p class={className} { ...useBlockProps() }>
 			{ __( ' Slug: ', 'claro-plugin' ) } { categorySlugs }
 			{ __( ' Post Type: ', 'claro-plugin' ) } { postType }
 		</p>
@@ -69,3 +74,4 @@ export default withSelect( ( select ) => {
 		postType,
 	};
 } )( Edit );
+
