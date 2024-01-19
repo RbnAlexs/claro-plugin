@@ -64,16 +64,28 @@ export default function Edit() {
 */
 
 
+
 function Edit({
   categories,
   postType
 }) {
   const categorySlugs = categories.map(category => category.slug).join(', ');
-  console.log(categorySlugs);
-  console.log('Post Type:', postType);
+  //console.log(categorySlugs);
+  //console.log('Post Type:', postType);
+
+  /*
+  	let className = '';
+  	if (categorySlugs.includes('nacional')) {
+  		className = 'nacional';
+  	}
+  */
   let className = '';
-  if (categorySlugs.includes('nacional')) {
-    className = 'my-css-class';
+  if (categories.length > 0) {
+    const firstCategorySlug = categories[0].slug;
+    let validCategories = ['nacional', 'internacional', 'entretenimiento', 'tecnologia', 'mascotas', 'deportes'];
+    if (validCategories.includes(firstCategorySlug)) {
+      className = firstCategorySlug;
+    }
   }
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     class: className,

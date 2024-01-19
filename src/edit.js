@@ -41,19 +41,28 @@ export default function Edit() {
 
 import { withSelect } from '@wordpress/data';
 
+import { RichText } from '@wordpress/block-editor';
+
 function Edit( { categories, postType } ) {
 
 	const categorySlugs = categories.map( category => category.slug ).join(', ');
-	console.log(categorySlugs);
-	console.log('Post Type:', postType);
+	//console.log(categorySlugs);
+	//console.log('Post Type:', postType);
 
-
+/*
 	let className = '';
 	if (categorySlugs.includes('nacional')) {
-		className = 'my-css-class';
+		className = 'nacional';
 	}
-
-	
+*/
+	let className = '';
+	if (categories.length > 0) {
+		const firstCategorySlug = categories[0].slug;
+		let validCategories = ['nacional', 'internacional', 'entretenimiento', 'tecnologia', 'mascotas', 'deportes'];
+		if (validCategories.includes(firstCategorySlug)) {
+			className = firstCategorySlug;
+		}
+	}
 
 	return (
 		<p class={className} { ...useBlockProps() }>
