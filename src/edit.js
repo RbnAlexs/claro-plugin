@@ -29,6 +29,7 @@ import './editor.scss';
  *
  * @return {Element} Element to render.
  */
+/*
 export default function Edit() {
 	return (
 		<p { ...useBlockProps() }>
@@ -36,3 +37,30 @@ export default function Edit() {
 		</p>
 	);
 }
+*/
+
+
+import { withSelect } from '@wordpress/data';
+
+function Edit( { categories } ) {
+
+	const categorySlugs = categories.map( category => category.slug ).join(', ');
+	console.log(categorySlugs);
+
+	return (
+		<p { ...useBlockProps() }>
+			{/* __( 'AMX Plugin – hello from the editor!', 'claro-plugin' ) */}
+			{ __( ' Categories: ', 'claro-plugin' ) } { categorySlugs }
+		</p>
+	);
+}
+
+export default withSelect( ( select ) => {
+	const { getEntityRecords } = select( 'core' );
+	const postID = select( 'core/editor' ).getCurrentPostId();
+	const categories = getEntityRecords( 'taxonomy', 'category', { post: postID } );
+
+	return {
+		categories: categories || [],
+	};
+} )( Edit );

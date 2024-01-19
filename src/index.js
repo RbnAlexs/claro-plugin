@@ -36,4 +36,8 @@ registerBlockType( metadata.name, {
 	 * @see ./save.js
 	 */
 	save,
+	// This ensures the block can only be used once per post.<---------
+	supports: {
+        multiple: false, 
+    },
 } );
