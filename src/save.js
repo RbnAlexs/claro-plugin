@@ -30,11 +30,19 @@ export default function save() {
 }
 */
 
+
 import { RichText } from '@wordpress/block-editor';
 
+
 export default function Save( { attributes } ) {
+
+	const {className, classCategory, title, description } = attributes;
+	console.log(attributes)
+	console.log("classCategory: " + classCategory)
+	console.log("className: " + className)
+
     return (
-        <div className="my-block-class">
+        <div className={classCategory || className }>
             <RichText.Content
                 tagName="h2"
                 value={ attributes.title }

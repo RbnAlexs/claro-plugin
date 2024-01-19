@@ -63,3 +63,5 @@ function blacklist_blocks( $allowed_blocks ) {
     return array_keys( $blocks );
 }
 add_filter( 'allowed_block_types_all', 'blacklist_blocks' );
+
+

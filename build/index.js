@@ -20,6 +20,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 
@@ -39,13 +42,28 @@ function Edit({
       description: value
     });
   };
+  const {
+    className
+  } = attributes;
 
   // The current post's categories are now available as a prop
-  const className = categories.length > 0 ? categories[0].slug : 'default-class';
+  const classCategory = categories.length > 0 ? categories[0].slug : 'default-class';
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
+    if (categories.length > 0) {
+      setAttributes({
+        classCategory: categories[0].slug
+      });
+    }
+    if (classCategory !== className) {
+      setAttributes({
+        className: classCategory
+      });
+    }
+  }, [categories, classCategory, className, setAttributes]);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(),
-    className: className
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    className: classCategory
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "Current Category: ", classCategory), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "Current CSS Class: ", className), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("italic", null, "If you changed your main category and it doesn't match with out palette color, please reload your editor and update to view your changes in front-end."), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "h2",
     value: attributes.title,
     allowedFormats: ['core/bold', 'core/italic'],
@@ -130,7 +148,18 @@ __webpack_require__.r(__webpack_exports__);
   // This ensures the block can only be used once per post.<---------
   supports: {
     multiple: false
-  }
+  },
+  // Add the deprecated field here
+  deprecated: [{
+    attributes: {
+      // Add the deprecated attribute here
+    },
+    save: ({
+      attributes
+    }) => {
+      // The old save function
+    }
+  }]
 });
 const {
   addFilter
@@ -204,8 +233,17 @@ export default function save() {
 function Save({
   attributes
 }) {
+  const {
+    className,
+    classCategory,
+    title,
+    description
+  } = attributes;
+  console.log(attributes);
+  console.log("classCategory: " + classCategory);
+  console.log("className: " + className);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "my-block-class"
+    className: classCategory || className
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     tagName: "h2",
     value: attributes.title
@@ -266,6 +304,16 @@ module.exports = window["wp"]["blocks"];
 /***/ ((module) => {
 
 module.exports = window["wp"]["data"];
+
+/***/ }),
+
+/***/ "@wordpress/element":
+/*!*********************************!*\
+  !*** external ["wp","element"] ***!
+  \*********************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["element"];
 
 /***/ }),
 

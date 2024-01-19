@@ -40,6 +40,21 @@ registerBlockType( metadata.name, {
 	supports: {
         multiple: false, 
     },
+
+	// Add the deprecated field here
+	deprecated: [
+		{
+			attributes: {
+				// Add the deprecated attribute here
+				
+
+			},
+
+			save: ({ attributes }) => {
+				// The old save function
+			},
+		},
+    ],
 } );
 
 const { addFilter } = wp.hooks;

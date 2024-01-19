@@ -1,6 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, RichText } from '@wordpress/block-editor';
 import { withSelect } from '@wordpress/data';
+import { useEffect } from '@wordpress/element';
 
 function Edit( { attributes, setAttributes, categories } ) {
 
@@ -12,13 +13,25 @@ function Edit( { attributes, setAttributes, categories } ) {
 		setAttributes( { description: value } );
 	};
 
+	const { className} = attributes;
 
 	// The current post's categories are now available as a prop
-    const className = categories.length > 0 ? categories[0].slug : 'default-class';
+    const classCategory = categories.length > 0 ? categories[0].slug : 'default-class';
+	useEffect(() => {
+		if (categories.length > 0) {
+		  setAttributes({ classCategory: categories[0].slug });
+		}
+		if (classCategory !== className) {
+            setAttributes({ className: classCategory });
+        }
+	  }, [categories, classCategory, className,  setAttributes]);
 
 
 	return (
-		<div { ...useBlockProps() }  className={className}>
+		<div { ...useBlockProps() }  className={classCategory}>
+			<span>Current Category: {classCategory}</span><br/>
+			<span>Current CSS Class: {className}</span><br/>
+			<italic>If you changed your main category and it doesn't match with out palette color, please reload your editor and update to view your changes in front-end.</italic>
 			<RichText
 				tagName="h2"
 				value={ attributes.title }
