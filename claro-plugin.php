@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name:       Claro Plugin
- * Description:       Example block scaffolded with Create Block tool.
+ * Plugin Name:       AMX Plugin
+ * Description:       A super simple Gutenberg plugin
  * Requires at least: 6.1
  * Requires PHP:      7.0
  * Version:           0.1.0
@@ -24,7 +24,21 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
+
+ /*
 function claro_plugin_claro_plugin_block_init() {
 	register_block_type( __DIR__ . '/build' );
+}
+add_action( 'init', 'claro_plugin_claro_plugin_block_init' );
+*/
+
+function claro_plugin_render_content( $attributes ) {
+	return '<h2>' . esc_html__( 'Hola mundo', 'claro-plugin' ) . '</h2>'; 
+}
+
+function claro_plugin_claro_plugin_block_init() {
+    register_block_type( __DIR__ . '/build', array(
+        'render_callback' => 'claro_plugin_render_content',
+    ));
 }
 add_action( 'init', 'claro_plugin_claro_plugin_block_init' );

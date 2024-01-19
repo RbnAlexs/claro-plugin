@@ -3,10 +3,11 @@
 	"apiVersion": 3,
 	"name": "create-block/claro-plugin",
 	"version": "0.1.0",
-	"title": "Claro Plugin",
-	"category": "widgets",
-	"icon": "smiley",
-	"description": "Example block scaffolded with Create Block tool.",
+	"title": "AMX Plugin",
+	"category": "widgets", 
+	"icon": "beer",
+	"keywords": [ "claro", "carso", "amx" ],
+	"description": "A super simple Gutenberg plugin. It will change according to the category you choose.",
 	"example": {},
 	"supports": {
 		"html": false

@@ -32,7 +32,7 @@ import './editor.scss';
 export default function Edit() {
 	return (
 		<p { ...useBlockProps() }>
-			{ __( 'Claro Plugin – hello from the editor!', 'claro-plugin' ) }
+			{ __( 'AMX Plugin – hello from the editor!', 'claro-plugin' ) }
 		</p>
 	);
 }
