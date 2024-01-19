@@ -15,6 +15,29 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {Element} Element to render.
  */
+/*
 export default function save() {
 	return null;
 }
+*/
+export default function save() {
+	return (
+		<p { ...useBlockProps.save() }>
+			{ 'Claro Plugin – hello from the saved content!' }
+		</p>
+	);
+}/*
+export default function save( { attributes } ) {
+    const { categorySlugs } = attributes;
+    let blockClass = 'my-block';
+
+    if (categorySlugs.includes('nacional')) {
+        blockClass += ' nacional';
+    }
+
+    return (
+        <div className={ blockClass }>
+        </div>
+    );
+}
+*/

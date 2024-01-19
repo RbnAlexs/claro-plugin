@@ -41,3 +41,19 @@ registerBlockType( metadata.name, {
         multiple: false, 
     },
 } );
+
+const { addFilter } = wp.hooks;
+const { select } = wp.data;
+
+addFilter(
+    'editor.BlockListBlock',
+    'my-plugin/with-inspector-controls',
+    function( BlockListBlock ) {
+        return function( props ) {
+            if ( props.name === 'create-block/claro-plugin' && select( 'core/editor' ).getCurrentPostType() !== 'post' ) {
+                return null;
+            }
+            return <BlockListBlock { ...props } />;
+        };
+    }
+);

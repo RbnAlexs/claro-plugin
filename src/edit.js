@@ -39,6 +39,8 @@ export default function Edit() {
 }
 */
 
+
+
 import { withSelect } from '@wordpress/data';
 
 function Edit( { categories, postType } ) {
@@ -50,8 +52,7 @@ function Edit( { categories, postType } ) {
 
 	return (
 		<p { ...useBlockProps() }>
-			{/* __( 'AMX Plugin – hello from the editor!', 'claro-plugin' ) */}
-			{ __( ' Categorias: ', 'claro-plugin' ) } { categorySlugs }
+			{ __( ' Slug: ', 'claro-plugin' ) } { categorySlugs }
 			{ __( ' Post Type: ', 'claro-plugin' ) } { postType }
 		</p>
 	);

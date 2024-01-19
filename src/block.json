@@ -7,7 +7,7 @@
 	"category": "widgets", 
 	"icon": "beer",
 	"keywords": [ "claro", "carso", "amx" ],
-	"description": "A super simple Gutenberg plugin. It will change according to the category you choose.",
+	"description": "A super simple Gutenberg plugin. It will change according to the category you choose. This block can only be used in posts.",
 	"example": {},
 	"supports": {
 		"html": false

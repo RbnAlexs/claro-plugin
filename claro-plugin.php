@@ -39,6 +39,7 @@ function claro_plugin_render_content( $attributes ) {
 function claro_plugin_claro_plugin_block_init() {
     register_block_type( __DIR__ . '/build', array(
         'render_callback' => 'claro_plugin_render_content',
+        'post_types' => array('post'),
     ));
 }
 add_action( 'init', 'claro_plugin_claro_plugin_block_init' );
