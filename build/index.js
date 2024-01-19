@@ -156,6 +156,8 @@ const {
 const {
   select
 } = wp.data;
+
+//Disable block on post type
 addFilter('editor.BlockListBlock', 'my-plugin/with-inspector-controls', function (BlockListBlock) {
   return function (props) {
     if (props.name === 'create-block/claro-plugin' && select('core/editor').getCurrentPostType() !== 'post') {

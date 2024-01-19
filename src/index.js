@@ -45,6 +45,7 @@ registerBlockType( metadata.name, {
 const { addFilter } = wp.hooks;
 const { select } = wp.data;
 
+//Disable block on post type
 addFilter(
     'editor.BlockListBlock',
     'my-plugin/with-inspector-controls',

@@ -43,3 +43,26 @@ function claro_plugin_claro_plugin_block_init() {
     ));
 }
 add_action( 'init', 'claro_plugin_claro_plugin_block_init' );
+
+ 
+
+
+function misha_blacklist_blocks( $allowed_blocks ) {
+    // get the current post type
+    $post_type = get_post_type();
+
+    // if the post type is 'post', return the allowed blocks without any modification
+    if ($post_type === 'post') {
+        return $allowed_blocks;
+    }
+
+    // get all the registered blocks
+    $blocks = WP_Block_Type_Registry::get_instance()->get_all_registered();
+
+    // then disable some of them
+    unset( $blocks[ 'create-block/claro-plugin' ] );
+
+    // return the new list of allowed blocks
+    return array_keys( $blocks );
+}
+add_filter( 'allowed_block_types_all', 'misha_blacklist_blocks' );
