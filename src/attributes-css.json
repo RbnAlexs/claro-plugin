@@ -1,0 +1,45 @@
+{
+    "atributos_css": [
+      {
+        "nombre": "Nacional",
+        "slug": "nacional",
+        "css": {
+          "color_del_fondo": "#00B049",
+          "color_de_texto": "#FFFFFF"
+        }
+      },
+      {
+        "nombre": "Entretenimiento",
+        "slug": "entretenimiento",
+        "css": {
+          "color_del_fondo": "#FFC915",
+          "color_de_texto": "#FFFFFF"
+        }
+      },
+      {
+        "nombre": "Tecnología",
+        "slug": "tecnologia",
+        "css": {
+          "color_del_fondo": "#00D3F8",
+          "color_de_texto": "#FFFFFF"
+        }
+      },
+      {
+        "nombre": "Mascotas",
+        "slug": "mascotas",
+        "css": {
+          "color_del_fondo": "#90456D",
+          "color_de_texto": "#FFFFFF"
+        }
+      },
+      {
+        "nombre": "Deportes",
+        "slug": "deportes",
+        "css": {
+          "color_del_fondo": "#FF372C",
+          "color_de_texto": "#FFFFFF"
+        }
+      }
+    ]
+  }
+  

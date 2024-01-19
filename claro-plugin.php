@@ -1,11 +1,11 @@
 <?php
 /**
- * Plugin Name:       AMX Plugin
+ * Plugin Name:       Claro Plugin
  * Description:       A super simple Gutenberg plugin
  * Requires at least: 6.1
  * Requires PHP:      7.0
  * Version:           0.1.0
- * Author:            The WordPress Contributors
+ * Author:            Ruben Sanchez
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       claro-plugin
@@ -33,7 +33,7 @@ add_action( 'init', 'claro_plugin_claro_plugin_block_init' );
 */
 
 function claro_plugin_render_content( $attributes ) {
-	return '<h2>' . esc_html__( 'Hola mundo', 'claro-plugin' ) . '</h2>'; 
+	return '<h2>' . esc_html__( '¡Hola mundo! :D', 'claro-plugin' ) . '</h2>'; 
 }
 
 function claro_plugin_claro_plugin_block_init() {

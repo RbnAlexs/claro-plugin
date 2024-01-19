@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "create-block/claro-plugin",
 	"version": "0.1.0",
-	"title": "AMX Plugin",
+	"title": "Claro Plugin",
 	"category": "widgets", 
 	"icon": "beer",
 	"keywords": [ "claro", "carso", "amx" ],
@@ -17,4 +17,8 @@
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
 	"viewScript": "file:./view.js"
+	
 }
+
+
+	

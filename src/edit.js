@@ -39,18 +39,20 @@ export default function Edit() {
 }
 */
 
-
 import { withSelect } from '@wordpress/data';
 
-function Edit( { categories } ) {
+function Edit( { categories, postType } ) {
 
 	const categorySlugs = categories.map( category => category.slug ).join(', ');
 	console.log(categorySlugs);
+	console.log('Post Type:', postType);
+
 
 	return (
 		<p { ...useBlockProps() }>
 			{/* __( 'AMX Plugin – hello from the editor!', 'claro-plugin' ) */}
-			{ __( ' Categories: ', 'claro-plugin' ) } { categorySlugs }
+			{ __( ' Categorias: ', 'claro-plugin' ) } { categorySlugs }
+			{ __( ' Post Type: ', 'claro-plugin' ) } { postType }
 		</p>
 	);
 }
@@ -58,9 +60,11 @@ function Edit( { categories } ) {
 export default withSelect( ( select ) => {
 	const { getEntityRecords } = select( 'core' );
 	const postID = select( 'core/editor' ).getCurrentPostId();
+	const postType = select( 'core/editor' ).getCurrentPostType();
 	const categories = getEntityRecords( 'taxonomy', 'category', { post: postID } );
 
 	return {
 		categories: categories || [],
+		postType,
 	};
 } )( Edit );

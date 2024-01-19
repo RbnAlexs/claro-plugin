@@ -65,24 +65,28 @@ export default function Edit() {
 
 
 function Edit({
-  categories
+  categories,
+  postType
 }) {
   const categorySlugs = categories.map(category => category.slug).join(', ');
   console.log(categorySlugs);
+  console.log('Post Type:', postType);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(' Categories: ', 'claro-plugin'), " ", categorySlugs);
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(' Categorias: ', 'claro-plugin'), " ", categorySlugs, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(' Post Type: ', 'claro-plugin'), " ", postType);
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.withSelect)(select => {
   const {
     getEntityRecords
   } = select('core');
   const postID = select('core/editor').getCurrentPostId();
+  const postType = select('core/editor').getCurrentPostType();
   const categories = getEntityRecords('taxonomy', 'category', {
     post: postID
   });
   return {
-    categories: categories || []
+    categories: categories || [],
+    postType
   };
 })(Edit));
 
@@ -261,7 +265,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/claro-plugin","version":"0.1.0","title":"AMX Plugin","category":"widgets","icon":"beer","keywords":["claro","carso","amx"],"description":"A super simple Gutenberg plugin. It will change according to the category you choose.","example":{},"supports":{"html":false},"textdomain":"claro-plugin","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/claro-plugin","version":"0.1.0","title":"Claro Plugin","category":"widgets","icon":"beer","keywords":["claro","carso","amx"],"description":"A super simple Gutenberg plugin. It will change according to the category you choose.","example":{},"supports":{"html":false},"textdomain":"claro-plugin","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 
