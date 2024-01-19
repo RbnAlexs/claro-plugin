@@ -6,6 +6,9 @@ yarn-debug.log*
 yarn-error.log*
 node_modules
 
+# Ignore all build directories
+**/build/
+
 # Coverage directory used by tools like istanbul
 coverage
 
