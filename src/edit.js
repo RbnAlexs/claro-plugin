@@ -1,7 +1,9 @@
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, RichText } from '@wordpress/block-editor';
+import { withSelect } from '@wordpress/data';
 
-export default function Edit( { attributes, setAttributes } ) {
+function Edit( { attributes, setAttributes, categories } ) {
+
 	const onChangeTitle = ( value ) => {
 		setAttributes( { title: value } );
 	};
@@ -10,8 +12,13 @@ export default function Edit( { attributes, setAttributes } ) {
 		setAttributes( { description: value } );
 	};
 
+
+	// The current post's categories are now available as a prop
+    const className = categories.length > 0 ? categories[0].slug : 'default-class';
+
+
 	return (
-		<div { ...useBlockProps() }  className="my-block-class">
+		<div { ...useBlockProps() }  className={className}>
 			<RichText
 				tagName="h2"
 				value={ attributes.title }
@@ -29,3 +36,12 @@ export default function Edit( { attributes, setAttributes } ) {
 		</div>
 	);
 }
+
+export default withSelect( ( select ) => {
+	const { getEntityRecords } = select( 'core' );
+	const postID = select( 'core/editor' ).getCurrentPostId();
+	const categories = getEntityRecords( 'taxonomy', 'category', { post: postID } );
+	return {
+		categories: categories || [],
+	};
+} )( Edit );
